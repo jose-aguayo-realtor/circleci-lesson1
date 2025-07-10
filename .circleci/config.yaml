@@ -1,0 +1,28 @@
+jobs:
+  helloworld:
+    docker:
+      - image: cimg/python:3.10.7
+    steps:
+      - checkout
+      - run:
+          name: Hello World
+          command: echo "Hello world from Jose"
+  goodbyeworld:
+    docker: 
+      - image: cimg/python:3.10.7
+    steps:
+      - run:
+          name: Goodbye World
+          command: echo "Goodbye world"
+
+workflows:
+  hello-world:
+    jobs:
+      - helloworld
+  goodbye-world:
+    jobs:
+      - goodbyeworld
+  hello-goodbye:
+    jobs:
+      - helloworld
+      - goodbyeworld
